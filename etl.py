@@ -6,6 +6,11 @@ from sql_queries import *
 
 
 def process_song_file(cur, filepath):
+    """
+    Process a Song file referenced by filepath parameter.
+    :param cur: database cursor (psycopg2)
+    :param filepath: path of the file to process 
+    """
     # open song file
     df = pd.read_json(filepath, lines=True)
 
@@ -19,6 +24,11 @@ def process_song_file(cur, filepath):
 
 
 def process_log_file(cur, filepath):
+    """
+    Process a given Log file referenced by filepath parameter.
+    :param cur: database cursor (psycopg2)
+    :param filepath: path of the file to process 
+    """
     # open log file
     df = pd.read_json(filepath, lines=True)
 
@@ -80,6 +90,9 @@ def process_data(cur, conn, filepath, func):
 
 
 def main():
+    """
+    Main method that executes at the start
+    """
     conn = psycopg2.connect("host=127.0.0.1 dbname=sparkifydb user=student password=student")
     cur = conn.cursor()
 
