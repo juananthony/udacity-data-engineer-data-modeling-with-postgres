@@ -71,6 +71,13 @@ def process_log_file(cur, filepath):
 
 
 def process_data(cur, conn, filepath, func):
+    """
+    This method searches all files int filepath and calls the `func` method with every file.
+    :param cur: database cursor (psycopg2)
+    :param conn: database connector (psycopg2)
+    :param filepath: folder path that has the data file
+    :param func: function to execute with each searched file
+    """
     # get all files matching extension from directory
     all_files = []
     for root, dirs, files in os.walk(filepath):
