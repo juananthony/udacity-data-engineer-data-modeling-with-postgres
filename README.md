@@ -9,7 +9,36 @@ This project creates a relational database in PosgreSQL reading json files from 
 * ```artists```
 * ```time```
 
-## File Description
+## Input Data
+
+In this section the input data structure is described.
+
+### Song data files
+
+### Log data files
+
+```json
+{
+    "artist":"Sydney Youngblood",
+    "auth":"Logged In",
+    "firstName":"Jacob",
+    "gender":"M",
+    "itemInSession":53,
+    "lastName":"Klein",
+    "length":238.07955,
+    "level":"paid",
+    "location":"Tampa-St. Petersburg-Clearwater, FL",
+    "method":"PUT",
+    "page":"NextSong",
+    "registration":1540558108796.0,
+    "sessionId":954,
+    "song":"Ain't No Sunshine",
+    "status":200,
+    "ts":1543449657796,
+    "userAgent":"\"Mozilla\/5.0 (Macintosh; Intel Mac OS X 10_9_4) AppleWebKit\/537.78.2 (KHTML, like Gecko) Version\/7.0.6 Safari\/537.78.2\"",
+    "userId":"73"
+}
+```
 
 ## Run the project
 
