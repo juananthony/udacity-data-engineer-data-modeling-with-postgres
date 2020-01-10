@@ -1,21 +1,47 @@
 # Project: Data Modeling with Postgres
 
 ## Summary
-This project creates a relational database in PosgreSQL reading json files from ```/data``` folder and insert the data into the following tables:
 
+This project creates a data mart (star schema) in PostgreSQL for analytics. The input data is given by json files stored at 
+```/data``` folder and a ETL process reads those files to load the data into a PostgreSQL database.
+
+This schema has a fact table:
 * ```songplays```
+
+And the following dimension tables:
 * ```users```
 * ```songs```
 * ```artists```
 * ```time```
 
-## Input Data
+![Entity-relationship diagram](docs/images/diagram.png)
+
+## File description
 
 In this section the input data structure is described.
 
 ### Song data files
 
+The data files about songs are stored at ```data/song_data``` folder. Each file is a collection of songs splitted in json objects. Example:
+
+```json
+{
+    "num_songs": 1,
+    "artist_id": "ARD7TVE1187B99BFB1",
+    "artist_latitude": null,
+    "artist_longitude": null,
+    "artist_location": "California - LA",
+    "artist_name": "Casual",
+    "song_id": "SOMZWCG12A8C13C480",
+    "title": "I Didn't Mean To",
+    "duration": 218.93179,
+    "year": 0
+}
+```
+
 ### Log data files
+
+This is an example of a log file. This file is generated when a user plays a song in the music application.
 
 ```json
 {
@@ -42,12 +68,12 @@ In this section the input data structure is described.
 
 ## Run the project
 
-First, tables have to be created executing the next command:
+First, we have to create the tables. There is a python script called ```create_tables.py``` that executes all queries in ```sql_queries.py```. Execute the following command:
 ```
 python create_tables.py
 ```
 
-Then, ETL must be executed to read the files and insert the date into the tables:
+Then, there is another python script ```etl.py``` that reads all files from ```data/log_data``` and ```data/song_data``` folders and insert into the proper table.
 ```
 python etl.py
 ```
